@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "amount": -2500.50,
+        "currency": "KES",
+        "date": "2025-10-30T10:30:00Z",
+        "description": "Grocery"
+    },
+    {
+        "id": 2,
+        "amount": -2500.50,
+        "currency": "KES",
+        "date": "2025-10-30T10:30:00Z",
+        "description": "Grocery"
+    },
+    {
+        "id": 3,
+        "amount": -2500.50,
+        "currency": "KES",
+        "date": "2025-10-30T10:30:00Z",
+        "description": "Grocery"
+    },
+    {
+        "id": 4,
+        "amount": -2500.50,
+        "currency": "KES",
+        "date": "2025-10-30T10:30:00Z",
+        "description": "Grocery"
+    },
+    {
+        "id": 5,
+        "amount": -2500.50,
+        "currency": "KES",
+        "date": "2025-10-30T10:30:00Z",
+        "description": "Grocery"
+    }
+]

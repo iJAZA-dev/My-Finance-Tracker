@@ -1,0 +1,26 @@
+[
+    {
+        "id": "b6a2d27f-45f2-42b8-b0e9-7f9838fba111",
+        "currencyCode": "USD",
+        "currencyName": "US Dollar",
+        "buyRate": 130.5,
+        "sellRate": 132.0,
+        "flagImage": "USA"
+    },
+    {
+        "id": "c8e62a93-8029-4b5b-8a2a-dc7a97a8b122",
+        "currencyCode": "EUR",
+        "currencyName": "Euro",
+        "buyRate": 140.2,
+        "sellRate": 142.7,
+        "flagImage": "EU"
+    },
+    {
+        "id": "dcbe57fd-6b94-4f5e-9239-8f3cf474c233",
+        "currencyCode": "GBP",
+        "currencyName": "British Pound",
+        "buyRate": 162.8,
+        "sellRate": 165.3,
+        "flagImage": "UK"
+    }
+]
