@@ -11,9 +11,6 @@ protocol APIClientProtocol {
     func fetchData(from url: URL) async throws -> Data
 }
 
-// APIClient.swift
-import Foundation
-
 final class APIClient: APIClientProtocol {
     static let shared = APIClient()
     private init() {}
