@@ -33,7 +33,8 @@ struct TransactionsSection: View {
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 Text(title)
-                    .font(.caption)
+                    .font(.headline)
+                   // .padding(.leading)
                 Spacer()
                 Button("View All") {
                     // NAVIGATION HANDLER
@@ -41,10 +42,16 @@ struct TransactionsSection: View {
                 .foregroundColor(.green)
             }
 
-            ForEach(transactions.prefix(5)) { txn in
-                TransactionRow(transaction: txn)
+            ScrollView {
+                VStack(spacing: 8) {
+                    ForEach(transactions.prefix(5)) { txn in
+                        TransactionRow(transaction: txn)
+                    }
+                }
             }
+            .frame(height: 300)
         }
+        .padding(.top)
     }
 }
 
@@ -61,8 +68,12 @@ struct TransactionRow: View {
                     .foregroundColor(.gray)
             }
             Spacer()
-            Text(transaction.formattedAmount)
-                .foregroundColor(transaction.amount < 0 ? .red : .green)
+            VStack {
+                Text(transaction.formattedAmount)
+                    .foregroundColor(transaction.amount < 0 ? .red : .green)
+                Text(transaction.category)
+                    .foregroundColor(.gray.opacity(0.7))
+            }
         }
         .padding()
         .background(Color.white)

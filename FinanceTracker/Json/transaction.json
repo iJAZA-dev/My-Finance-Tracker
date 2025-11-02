@@ -1,37 +1,59 @@
 [
     {
         "id": 1,
-        "amount": -2500.50,
+        "amount": 54373.40,
         "currency": "KES",
         "date": "2025-10-30T10:30:00Z",
-        "description": "Grocery"
+        "description": "Grocery",
+        "category": "Eating-out"
     },
     {
         "id": 2,
-        "amount": -2500.50,
+        "amount": 13232.43,
         "currency": "KES",
         "date": "2025-10-30T10:30:00Z",
-        "description": "Grocery"
+        "description": "Grocery",
+        "category": "Eating-out"
     },
     {
         "id": 3,
         "amount": -2500.50,
         "currency": "KES",
         "date": "2025-10-30T10:30:00Z",
-        "description": "Grocery"
+        "description": "Grocery",
+        "category": "Eating-out"
     },
     {
         "id": 4,
-        "amount": -2500.50,
+        "amount": -5555.50,
         "currency": "KES",
         "date": "2025-10-30T10:30:00Z",
-        "description": "Grocery"
+        "description": "Grocery",
+        "category": "Eating-out"
     },
     {
         "id": 5,
-        "amount": -2500.50,
+        "amount": -3333.50,
         "currency": "KES",
         "date": "2025-10-30T10:30:00Z",
-        "description": "Grocery"
+        "description": "Grocery",
+        "category": "Eating-out"
+        
+    },
+    {
+        "id": 6,
+        "amount": 9999.50,
+        "currency": "KES",
+        "date": "2025-10-30T10:30:00Z",
+        "description": "Grocery",
+        "category": "Shopping"
+    },
+    {
+        "id": 7,
+        "amount": 77777.07,
+        "currency": "KES",
+        "date": "2025-10-30T10:30:00Z",
+        "description": "Grocery",
+        "category": "Shopping"
     }
 ]

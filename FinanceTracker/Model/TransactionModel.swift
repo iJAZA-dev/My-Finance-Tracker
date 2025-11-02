@@ -37,6 +37,7 @@ struct TransactionModel: Identifiable, Codable, TransactionRepresentable {
     let currency: String
     let date: Date
     let description: String
+    let category: String
 }
 
 

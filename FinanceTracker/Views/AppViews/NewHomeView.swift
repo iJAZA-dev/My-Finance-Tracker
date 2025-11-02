@@ -18,8 +18,9 @@ struct NewHomeView: View {
         NavigationView {
             VStack(spacing: 16) {
                 HeaderView(userName: userName)
-                BalanceView()
-                
+                    .padding(.leading)
+                BalanceView(transactions: viewModel.transactions)
+
                 if viewModel.isLoading {
                     ProgressView("Loading transactions...")
                 } else if let error = viewModel.errorMessage {
@@ -31,6 +32,7 @@ struct NewHomeView: View {
                         title: recentTransLabel,
                         transactions: viewModel.transactions
                     )
+                    
                 }
 
                 AddTransactionButton {

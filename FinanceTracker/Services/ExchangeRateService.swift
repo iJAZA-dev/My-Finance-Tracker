@@ -14,13 +14,21 @@ protocol ExchangeRateServiceProtocol {
 }
 
 final class ExchangeRateService: ExchangeRateServiceProtocol {
+    
+    private let client: APIClientProtocol
+    private let bundleFileName = "exchangeRate"
+
+    init(client: APIClientProtocol = APIClient.shared) {
+        self.client = client
+    }
+    
     func fetchExchangeRates() async throws -> [ExchangeRateModel] {
-        guard let url = Bundle.main.url(forResource: "exchangeRate", withExtension: "json") else {
+        guard let url = Bundle.main.url(forResource: bundleFileName, withExtension: "json") else {
             throw NetworkError.invalidURL
         }
         
         do {
-            let data = try Data(contentsOf: url)
+            let data = try await client.fetchData(from: url)
             let decoded = try JSONDecoder().decode([ExchangeRateModel].self, from: data)
             return decoded
         } catch {

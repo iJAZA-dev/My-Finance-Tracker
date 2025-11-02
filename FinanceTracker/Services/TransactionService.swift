@@ -12,12 +12,21 @@ protocol TransactionServiceProtocol {
 }
 
 final class TransactionService: TransactionServiceProtocol {
+    
+    private let client: APIClientProtocol
+    private let bundleFileName = "transaction"
+
+    init(client: APIClientProtocol = APIClient.shared) {
+        self.client = client
+    }
+    
     func fetchTransactions() async throws -> [TransactionModel] {
-        guard let url = Bundle.main.url(forResource: "transaction", withExtension: "json") else {
+        
+        guard let url = Bundle.main.url(forResource: bundleFileName, withExtension: "json") else {
             throw URLError(.fileDoesNotExist)
         }
 
-        let data = try Data(contentsOf: url)
+        let data = try await client.fetchData(from: url)
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
         return try decoder.decode([TransactionModel].self, from: data)
