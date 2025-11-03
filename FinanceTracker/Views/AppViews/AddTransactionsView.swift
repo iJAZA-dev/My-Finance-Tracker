@@ -16,8 +16,14 @@ struct AddTransactionView: View {
     @State private var date = Date()
     @State private var selectedCategory = "Transport"
     @State private var description: String = ""
+   
+    @State private var showAlert = false
+    @State private var alertTitle = ""
+    @State private var alertMessage = ""
     
     let categories = ["Transport", "Shopping", "Food", "Bills", "Entertainment"]
+    
+    var onAddTransaction: ((TransactionModel) -> Void)?
     
     var body: some View {
         NavigationView {
@@ -113,8 +119,36 @@ struct AddTransactionView: View {
                     
                     // MARK: - Submit Button
                     Button(action: {
-                        // Handle save logic
-                        dismiss()
+                        guard let amountValue = Double(amount), amountValue > 0 else {
+                            alertTitle = "Invalid Amount"
+                            alertMessage = "Please enter a valid positive number for amount."
+                            showAlert = true
+                            return
+                        }
+                        
+                        let signedAmount = isIncome ? amountValue : -amountValue
+                        
+                        let newTransaction = TransactionModel(
+                            id: Int(Date().timeIntervalSince1970),
+                            amount: signedAmount,
+                            currency: "KES",
+                            date: date,
+                            description: description.isEmpty ? selectedCategory : description,
+                            category: selectedCategory
+                        )
+                        
+                        // Save locally
+                        var transactions = TransactionStore.shared.load()
+                        transactions.append(newTransaction)
+                        TransactionStore.shared.save(transactions)
+                        
+                        // Notify parent view
+                        onAddTransaction?(newTransaction)
+                        
+                        // Show success popup
+                        alertMessage = "Transaction added successfully!"
+                        showAlert = true
+                        // dismiss()
                     }) {
                         Text("Add Transaction")
                             .frame(maxWidth: .infinity)
@@ -129,10 +163,20 @@ struct AddTransactionView: View {
             }
             .navigationTitle("Add Transaction")
             .navigationBarTitleDisplayMode(.inline)
+            .alert(isPresented: $showAlert) {
+                Alert(
+                    title: Text("Finance Tracker"),
+                    message: Text(alertMessage),
+                    dismissButton: .default(Text("OK")) {
+                        if alertMessage.contains("success") {
+                            dismiss()
+                        }
+                    }
+                )
+            }
         }
     }
 }
-
 
 
 #Preview {

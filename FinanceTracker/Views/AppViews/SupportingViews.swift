@@ -44,7 +44,7 @@ struct TransactionsSection: View {
 
             ScrollView {
                 VStack(spacing: 8) {
-                    ForEach(transactions.prefix(5)) { txn in
+                    ForEach(sortedRecentTransactions.prefix(5)) { txn in
                         TransactionRow(transaction: txn)
                     }
                 }
@@ -52,6 +52,10 @@ struct TransactionsSection: View {
             .frame(height: 300)
         }
         .padding(.top)
+    }
+    
+    private var sortedRecentTransactions: [TransactionModel] {
+        transactions.sorted { $0.date > $1.date }
     }
 }
 

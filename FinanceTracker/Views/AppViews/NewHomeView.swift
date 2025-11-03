@@ -45,7 +45,9 @@ struct NewHomeView: View {
                 await viewModel.fetchTransactions()
             }
             .sheet(isPresented: $showAddTransaction) {
-                AddTransactionView()
+                AddTransactionView { newTransaction in
+                    viewModel.transactions.append(newTransaction)
+                }
             }
         }
     }
